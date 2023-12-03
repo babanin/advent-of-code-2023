@@ -3,19 +3,28 @@ package org.example
 import kotlin.io.path.Path
 import kotlin.io.path.readLines
 
+val digitMap = mapOf(
+    "one" to 1,
+    "two" to 2,
+    "three" to 3,
+    "four" to 4,
+    "five" to 5,
+    "six" to 6,
+    "seven" to 7,
+    "eight" to 8,
+    "nine" to 9
+)
+
 fun main() {
-    val digitMap = mapOf(
-        "one" to 1,
-        "two" to 2,
-        "three" to 3,
-        "four" to 4,
-        "five" to 5,
-        "six" to 6,
-        "seven" to 7,
-        "eight" to 8,
-        "nine" to 9
+    println("Part #1")
+    println(
+        Path("input.txt").readLines()
+            .map { it.filter(Character::isDigit) }
+            .filter(String::isNotEmpty)
+            .sumOf { it.first().digitToInt() * 10 + it.last().digitToInt() }
     )
 
+    println("Part #2")
     println(
         Path("input.txt").readLines()
             .map { line ->
